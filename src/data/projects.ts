@@ -9,14 +9,6 @@ export type Project = {
 // Add your personal projects here. `featured: true` surfaces it on the home page.
 export const PROJECTS: Project[] = [
   {
-    name: 'Streak',
-    blurb:
-      'A small habit tracker. The idea is to build a habit in five minutes a day and keep the streak going.',
-    tags: ['Product', 'Habits'],
-    href: '#',
-    featured: true,
-  },
-  {
     name: 'AI Internals',
     blurb:
       'A curriculum I am working through to understand how modern AI systems work by building them from scratch.',

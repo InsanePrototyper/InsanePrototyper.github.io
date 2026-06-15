@@ -25,5 +25,6 @@ export const SOCIALS = [
   { label: 'GitHub', href: 'https://github.com/InsanePrototyper' },
   { label: 'LinkedIn', href: 'https://www.linkedin.com/in/ashutosh-kaushik-ak18' },
   { label: 'Codeforces', href: 'https://codeforces.com/profile/AK18' },
+  { label: 'Valorant', href: 'https://tracker.gg/valorant/profile/riot/AK18%239467/overview' },
   { label: 'Email', href: 'mailto:ashutoshkaushikiiita@gmail.com' },
 ];
