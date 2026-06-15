@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import { BOOKS } from '../data/books';
+
+const order = { reading: 0, queued: 1, finished: 2 } as const;
+const books = [...BOOKS].sort((a, b) => order[a.status] - order[b.status]);
+const labels = { reading: 'Reading', queued: 'Queued', finished: 'Finished' };
+---
+
+<Base title="Reading" description="Books I'm reading, have read, and want to read.">
+  <h1>Reading</h1>
+  <p class="lead">Books I'm reading now, what's next in the queue, and some I've finished.</p>
+
+  <div style="margin-top:28px">
+    {books.map((b) => (
+      <div class="book">
+        <span class={`badge ${b.status}`}>{labels[b.status]}</span>
+        <span class="btitle">{b.title}</span>
+        <span class="bauthor">by {b.author}</span>
+        {b.note && <span class="bnote">{b.note}</span>}
+      </div>
+    ))}
+  </div>
+</Base>

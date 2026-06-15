@@ -1,0 +1,19 @@
+---
+import Base from '../layouts/Base.astro';
+import { PROJECTS } from '../data/projects';
+---
+
+<Base title="Projects" description="Things I've built and tinkered with.">
+  <h1>Projects</h1>
+  <p class="lead">Things I've built and things I'm still working on.</p>
+
+  <div class="grid" style="margin-top:32px">
+    {PROJECTS.map((p) => (
+      <a class="card" href={p.href ?? '#'}>
+        <h3>{p.name}</h3>
+        <p>{p.blurb}</p>
+        <div class="tags">{p.tags.map((t) => <span class="tag">{t}</span>)}</div>
+      </a>
+    ))}
+  </div>
+</Base>

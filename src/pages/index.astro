@@ -1,0 +1,56 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE, SOCIALS } from '../consts';
+import { PROJECTS } from '../data/projects';
+import { getCollection } from 'astro:content';
+
+const featured = PROJECTS.filter((p) => p.featured);
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 3);
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+---
+
+<Base>
+  <section class="hero">
+    <h1>{SITE.name}</h1>
+    <p class="tagline">{SITE.tagline}</p>
+    <p class="bio">
+      I work on AI agents, RAG, and backend infrastructure at
+      <a href="https://wolfia.com">Wolfia (YC)</a>. Before this I was at Flipkart
+      and Safe Security. This site is where I keep my work, the projects I'm
+      building, what I'm writing, and the books I'm reading.
+    </p>
+    <p class="meta">📍 {SITE.location}</p>
+    <div class="socials">
+      {SOCIALS.map((s) => <a href={s.href}>{s.label}</a>)}
+    </div>
+  </section>
+
+  <h2 class="section-label">Selected projects</h2>
+  <div class="grid cols-2">
+    {featured.map((p) => (
+      <a class="card" href={p.href ?? '#'}>
+        <h3>{p.name}</h3>
+        <p>{p.blurb}</p>
+        <div class="tags">{p.tags.map((t) => <span class="tag">{t}</span>)}</div>
+      </a>
+    ))}
+  </div>
+  <p style="margin-top:16px"><a href="/projects">All projects →</a></p>
+
+  <h2 class="section-label">Latest writing</h2>
+  <ul class="post-list">
+    {posts.map((post) => (
+      <li>
+        <a href={`/writing/${post.slug}`}>
+          <span class="ptitle">{post.data.title}</span>
+          <span class="pdate">{fmt(post.data.date)}</span>
+          <span class="pdesc">{post.data.description}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+  <p style="margin-top:16px"><a href="/writing">All posts →</a></p>
+</Base>

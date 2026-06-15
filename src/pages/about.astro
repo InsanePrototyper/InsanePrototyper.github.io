@@ -1,0 +1,41 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE, SOCIALS } from '../consts';
+import { EXPERIENCE } from '../data/experience';
+---
+
+<Base title="About" description="Background, experience and how to reach me.">
+  <h1>About</h1>
+  <p class="lead">
+    I'm a software engineer. Most of my work these days is on AI systems: agents,
+    RAG, and the backend infrastructure that keeps them running.
+  </p>
+  <p style="margin-top:16px">
+    I studied at IIIT Allahabad, first a B.Tech in IT and then an M.Tech. I also
+    have a paper in SpringerLink on a lightweight intrusion and electricity-theft
+    detection system for smart grids. Right now I work on AI products at Wolfia.
+    Before that I built data and LLM systems at Safe Security, and worked on the
+    offers and cart platform at Flipkart.
+  </p>
+
+  <h2 class="section-label" style="margin-top:48px">Experience</h2>
+  <div class="exp">
+    {EXPERIENCE.map((job) => (
+      <div class="exp-item">
+        <div class="exp-head">
+          <span class="exp-role">{job.role}</span>
+          <span class="exp-co">{job.company}</span>
+          <span class="exp-period">{job.period}</span>
+        </div>
+        <ul>
+          {job.highlights.map((h) => <li>{h}</li>)}
+        </ul>
+      </div>
+    ))}
+  </div>
+
+  <h2 class="section-label" style="margin-top:48px">Elsewhere</h2>
+  <div class="socials">
+    {SOCIALS.map((s) => <a href={s.href}>{s.label}</a>)}
+  </div>
+</Base>

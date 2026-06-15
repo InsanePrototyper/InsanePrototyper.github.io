@@ -1,0 +1,27 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+---
+
+<Base title="Writing" description="Notes, learnings and longer essays.">
+  <h1>Writing</h1>
+  <p class="lead">Notes on what I'm learning and building.</p>
+
+  <ul class="post-list" style="margin-top:28px">
+    {posts.map((post) => (
+      <li>
+        <a href={`/writing/${post.slug}`}>
+          <span class="ptitle">{post.data.title}</span>
+          <span class="pdate">{fmt(post.data.date)}</span>
+          <span class="pdesc">{post.data.description}</span>
+        </a>
+      </li>
+    ))}
+  </ul>
+  {posts.length === 0 && <p style="margin-top:24px">No posts yet. First one is coming soon.</p>}
+</Base>
