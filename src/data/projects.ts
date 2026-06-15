@@ -14,7 +14,6 @@ export const PROJECTS: Project[] = [
       'A curriculum I am working through to understand how modern AI systems work by building them from scratch.',
     tags: ['Learning', 'AI', 'Systems'],
     href: 'https://github.com/InsanePrototyper',
-    featured: true,
   },
   {
     name: 'Competitive Programming',

@@ -1,10 +1,8 @@
 ---
 import Base from '../layouts/Base.astro';
 import { SITE, SOCIALS } from '../consts';
-import { PROJECTS } from '../data/projects';
 import { getCollection } from 'astro:content';
 
-const featured = PROJECTS.filter((p) => p.featured);
 const posts = (await getCollection('blog', ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 3);
@@ -27,18 +25,6 @@ const fmt = (d: Date) =>
       {SOCIALS.map((s) => <a href={s.href}>{s.label}</a>)}
     </div>
   </section>
-
-  <h2 class="section-label">Selected projects</h2>
-  <div class="grid cols-2">
-    {featured.map((p) => (
-      <a class="card" href={p.href ?? '#'}>
-        <h3>{p.name}</h3>
-        <p>{p.blurb}</p>
-        <div class="tags">{p.tags.map((t) => <span class="tag">{t}</span>)}</div>
-      </a>
-    ))}
-  </div>
-  <p style="margin-top:16px"><a href="/projects">All projects →</a></p>
 
   <h2 class="section-label">Latest writing</h2>
   <ul class="post-list">
