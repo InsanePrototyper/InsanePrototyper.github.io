@@ -1,25 +1,19 @@
 ---
 title: "Why I built this site"
-description: "A small static site for my work, projects, writing, and reading. No backend, nothing to maintain."
+description: "A small static site for my work, notes, and reading. No backend, nothing to maintain."
 date: 2026-06-16
 tags: ["meta", "web"]
 ---
 
-I wanted one place that is mine. Not a feed and not a platform. Somewhere to keep
-my work, the projects I am building, the books I am reading, and the things I am
-figuring out along the way.
+I had been meaning to set up a personal site for a while and kept putting it off.
+This is me finally getting around to it.
 
-So this is it. It is a static site. Plain HTML and CSS, served by GitHub Pages,
-and rebuilt every time I push. There is no server and no database, so there is
-nothing for me to keep alive.
+It is a static site. Astro builds the pages from Markdown, GitHub Actions rebuilds
+it on every push, and GitHub Pages hosts it for free. No server and no database,
+so there is nothing to keep running.
 
-Here is how it works:
+To publish a post I add a Markdown file and push. That was the main thing I cared
+about. If publishing is annoying, I will not do it, so I kept it simple.
 
-- Astro builds the pages from Markdown and components.
-- GitHub Actions rebuilds the site on every push.
-- GitHub Pages serves it for free over HTTPS.
-
-To write a post I drop a Markdown file into a folder and push. That is the whole
-workflow. The point was to make it easy enough that I actually do it.
-
-More soon.
+I will use this for notes on what I am building and learning, the books I am
+reading, and anything else worth keeping in one place.

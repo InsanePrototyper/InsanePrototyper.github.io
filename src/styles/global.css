@@ -248,3 +248,41 @@ a.card:hover { border-color: var(--accent); text-decoration: none; transform: tr
   font-size: 0.7rem; font-family: var(--mono); color: #d9a441;
   background: rgba(217, 164, 65, 0.12); padding: 1px 7px; border-radius: 5px;
 }
+
+/* Long URLs in bullets/prose should wrap instead of overflowing. */
+.exp-item li, .prose a, .post-list .pdesc { overflow-wrap: anywhere; }
+
+/* ─────────────────────────────────────────────
+   Mobile
+   ───────────────────────────────────────────── */
+@media (max-width: 600px) {
+  body { font-size: 15.5px; }
+  .wrap { padding: 0 20px; }
+  main { padding: 32px 0 72px; }
+
+  /* Stack the header: brand on one line, nav below it. */
+  .site-header .wrap {
+    flex-direction: column;
+    align-items: stretch;
+    height: auto;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    gap: 10px;
+  }
+  .nav { gap: 18px; }
+  .nav a { font-size: 0.9rem; }
+  .theme-toggle { margin-left: auto; }
+
+  /* Tighter type scale. */
+  .hero { padding-top: 8px; }
+  .hero h1 { font-size: 2rem; }
+  h1 { font-size: 1.8rem; }
+  h2 { font-size: 1.25rem; }
+  .post-header h1 { font-size: 1.7rem; }
+
+  /* Stack rows vertically so titles and dates do not collide. */
+  .post-list a { flex-direction: column; align-items: flex-start; gap: 3px; }
+  .post-list .pdate { margin-left: 0; }
+  .exp-item .exp-head { flex-direction: column; align-items: flex-start; gap: 2px; }
+  .exp-item .exp-period { margin-left: 0; }
+}
