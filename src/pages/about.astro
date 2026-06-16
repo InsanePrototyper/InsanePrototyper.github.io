@@ -19,80 +19,77 @@ function linkify(text: string): string {
     '<a href="$1" target="_blank" rel="noopener">$1</a>',
   );
 }
+
+// One muted line per role: dates, then location. "Full-time" is dropped
+// (it reads like a resume); internships are kept since that is real context.
+function meta(job: (typeof EXPERIENCE)[number]): string {
+  const employment = job.employment === 'Full-time' ? undefined : job.employment;
+  return [job.period, employment, job.location].filter(Boolean).join(' · ');
+}
 ---
 
-<Base title="About" description="Background, experience, education and how to reach me.">
+<Base title="About" description="A bit about me, what I've worked on, and how to reach me.">
   <h1>About</h1>
   <p class="lead">
     I'm a software engineer. Most of my work these days is on AI systems: agents,
     RAG, and the backend infrastructure that keeps them running.
   </p>
 
-  <h2 class="section-label" style="margin-top:48px">Experience</h2>
-  <div class="exp">
+  <h2 class="section-label">Work</h2>
+  <div class="roles">
     {EXPERIENCE.map((job) => (
-      <div class="exp-item">
-        <div class="exp-head">
-          <span class="exp-role">{job.role}</span>
-          <span class="exp-co">{job.company}{job.employment ? ` · ${job.employment}` : ''}</span>
-          <span class="exp-period">{job.period}</span>
-        </div>
-        {job.location && <p class="exp-loc">{job.location}</p>}
-        {job.intro && <p class="exp-intro">{job.intro}</p>}
+      <article class="role">
+        <h3 class="role-title">
+          {job.role} <span class="role-at">at {job.company}</span>
+        </h3>
+        <p class="role-meta">{meta(job)}</p>
         {job.highlights.length > 0 && (
-          <ul>
+          <ul class="role-points">
             {job.highlights.map((h) => <li set:html={linkify(h)} />)}
           </ul>
         )}
-        {job.stack && <p class="exp-stack">{job.stack}</p>}
-      </div>
+        {job.stack && <p class="role-tech">{job.stack}</p>}
+      </article>
     ))}
   </div>
 
-  <h2 class="section-label" style="margin-top:48px">Education</h2>
-  <div class="exp">
+  <h2 class="section-label">Education</h2>
+  <div class="roles">
     {EDUCATION.map((ed) => (
-      <div class="exp-item">
-        <div class="exp-head">
-          <span class="exp-role">{ed.degree}</span>
-          <span class="exp-period">{ed.period}</span>
-        </div>
-        <p class="exp-loc">{ed.school}</p>
-        {ed.detail && <p class="exp-stack">{ed.detail}</p>}
-      </div>
+      <article class="role">
+        <h3 class="role-title">{ed.degree}</h3>
+        <p class="role-meta">{ed.school} · {ed.period}</p>
+        {ed.detail && <p class="role-tech">{ed.detail}</p>}
+      </article>
     ))}
   </div>
 
-  <h2 class="section-label" style="margin-top:48px">Publications</h2>
-  <div class="exp">
+  <h2 class="section-label">Publications</h2>
+  <div class="roles">
     {PUBLICATIONS.map((pub) => (
-      <div class="exp-item">
-        <span class="exp-role">{pub.title}</span>
-        <p class="exp-loc">{pub.venue} · {pub.date}</p>
-      </div>
+      <article class="role">
+        <h3 class="role-title">{pub.title}</h3>
+        <p class="role-meta">{pub.venue} · {pub.date}</p>
+      </article>
     ))}
   </div>
 
-  <h2 class="section-label" style="margin-top:48px">Licenses &amp; certifications</h2>
-  <div class="exp">
+  <h2 class="section-label">Certifications</h2>
+  <ul class="plain-list">
     {CERTIFICATIONS.map((c) => (
-      <div class="exp-item">
-        <div class="exp-head">
-          <span class="exp-role">{c.title}</span>
-          <span class="exp-period">{c.issued}</span>
-        </div>
-        <p class="exp-loc">{c.issuer}</p>
-      </div>
+      <li>
+        {c.title} <span class="role-meta">· {c.issuer}, {c.issued}</span>
+      </li>
     ))}
-  </div>
+  </ul>
 
-  <h2 class="section-label" style="margin-top:48px">Off the clock</h2>
+  <h2 class="section-label">Off the clock</h2>
   <p>
-    When I'm not building, I play a fair bit of Valorant. You can see my stats on
-    my <a href="https://tracker.gg/valorant/profile/riot/AK18%239467/overview" target="_blank" rel="noopener">tracker profile</a> (AK18#9467).
+    When I'm not building, I play a fair bit of Valorant. My stats live on my
+    <a href="https://tracker.gg/valorant/profile/riot/AK18%239467/overview" target="_blank" rel="noopener"> tracker profile</a> (AK18#9467).
   </p>
 
-  <h2 class="section-label" style="margin-top:48px">Elsewhere</h2>
+  <h2 class="section-label">Elsewhere</h2>
   <div class="socials">
     {SOCIALS.map((s) => <a href={s.href}>{s.label}</a>)}
   </div>

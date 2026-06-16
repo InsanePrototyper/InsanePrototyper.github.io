@@ -178,17 +178,18 @@ a.card:hover { border-color: var(--accent); text-decoration: none; transform: tr
 .post-list .pdate { color: var(--text-dim); font-size: 0.85rem; font-family: var(--mono); margin-left: auto; }
 .post-list .pdesc { flex-basis: 100%; color: var(--text-soft); font-size: 0.9rem; }
 
-.exp { display: flex; flex-direction: column; gap: 28px; }
-.exp-item .exp-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; }
-.exp-item .exp-role { font-weight: 600; color: var(--text); }
-.exp-item .exp-co { color: var(--accent); }
-.exp-item .exp-period { margin-left: auto; color: var(--text-dim); font-size: 0.85rem; font-family: var(--mono); }
-.exp-item ul { margin: 10px 0 0 0; padding-left: 18px; }
-.exp-item li { color: var(--text-soft); font-size: 0.93rem; margin-bottom: 4px; }
-.exp-item .exp-loc { color: var(--text-dim); font-size: 0.85rem; margin-top: 2px; }
-.exp-item .exp-intro { color: var(--text-soft); font-size: 0.93rem; margin-top: 10px; }
-.exp-item .exp-intro + ul { margin-top: 4px; }
-.exp-item .exp-stack { color: var(--text-dim); font-size: 0.86rem; margin-top: 8px; font-style: italic; }
+/* Work / education / publications on the About page */
+.roles { display: flex; flex-direction: column; gap: 32px; }
+.role-title { font-size: 1.05rem; font-weight: 600; color: var(--text); }
+.role-title .role-at { font-weight: 450; color: var(--text-soft); }
+.role-meta { color: var(--text-dim); font-size: 0.85rem; margin-top: 3px; }
+.role-points { margin: 14px 0 0; padding-left: 18px; }
+.role-points li { color: var(--text-soft); font-size: 0.93rem; margin-bottom: 6px; line-height: 1.55; overflow-wrap: anywhere; }
+.role-tech { color: var(--text-dim); font-size: 0.86rem; margin-top: 12px; }
+
+.plain-list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.plain-list li { color: var(--text); font-size: 0.95rem; }
+.plain-list .role-meta { display: inline; margin-top: 0; }
 
 .book { display: flex; align-items: baseline; gap: 10px; padding: 12px 0; border-bottom: 1px solid var(--border); }
 .book .badge {
@@ -250,7 +251,7 @@ a.card:hover { border-color: var(--accent); text-decoration: none; transform: tr
 }
 
 /* Long URLs in bullets/prose should wrap instead of overflowing. */
-.exp-item li, .prose a, .post-list .pdesc { overflow-wrap: anywhere; }
+.role-points li, .prose a, .post-list .pdesc { overflow-wrap: anywhere; }
 
 /* ─────────────────────────────────────────────
    Mobile
@@ -283,6 +284,4 @@ a.card:hover { border-color: var(--accent); text-decoration: none; transform: tr
   /* Stack rows vertically so titles and dates do not collide. */
   .post-list a { flex-direction: column; align-items: flex-start; gap: 3px; }
   .post-list .pdate { margin-left: 0; }
-  .exp-item .exp-head { flex-direction: column; align-items: flex-start; gap: 2px; }
-  .exp-item .exp-period { margin-left: 0; }
 }
