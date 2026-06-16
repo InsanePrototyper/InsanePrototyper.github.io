@@ -52,7 +52,7 @@ export const EXPERIENCE: Job[] = [
       'daily digest',
       'Document analysis using AWS bedrock',
     ],
-    stack: 'TypeScript, Amazon Web Services (AWS) and +7 skills',
+    stack: 'TypeScript, Amazon Web Services (AWS)',
   },
   {
     company: 'Flipkart',
@@ -123,7 +123,7 @@ export const EDUCATION: Degree[] = [
     school: 'Indian Institute Of Information Technology Allahabad',
     degree: 'Bachelor of Technology - BTech, Information Technology',
     period: 'Jan 2017 - Jun 2021',
-    detail: 'Algorithms, C++ and +9 skills',
+    detail: 'Algorithms, C++',
   },
 ];
 
