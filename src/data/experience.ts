@@ -37,6 +37,8 @@ export const EXPERIENCE: Job[] = [
       "Evals dashboard for customers: they can configure custom evals, track Wolfia's performance over time, and add edge cases for different products",
       'Search across our app features, using Fuse.js',
       'Scaled questionnaire processing and fixed memory issues',
+      'TDD guard for Claude Code: each worktree stores a summary of the last test run, and on every edit the change is sent to Sonnet to judge whether it supports the failing (red) tests from that run — if not, the edit is rejected',
+      'Zammad-based internal customer support: engineers respond to customer requests through our bot to track SLAs and related metrics',
     ],
   },
   {
